@@ -1,0 +1,12 @@
+{
+  "prettier.printWidth": 100,
+  "editor.rulers": [100],
+  "vim.textwidth": 100,
+  "[typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

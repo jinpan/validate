@@ -1,0 +1,12 @@
+services:
+  base:
+    env_file:
+      - env/common
+      - env/private
+    volumes:
+      - type: bind
+        source: ../..
+        target: /validate
+        bind:
+          selinux: z
+    stop_grace_period: 0s

@@ -1,0 +1,29 @@
+version: "3"
+
+tasks:
+  build:
+    cmds:
+      - docker compose -f devops/local/docker-compose.yml --project-name=validate build
+  up:
+    cmds:
+      - task: build
+      - docker compose -f devops/local/docker-compose.yml --project-name=validate up --detach --wait
+
+  down:
+    cmds:
+      - docker compose --project-name=validate down
+
+  restart:
+    cmds:
+      - task: down
+      - task: up
+
+  danger-reset-noconfirm:
+    cmds:
+      - task: down
+      - docker system prune --all --force
+      - docker volume prune --force
+
+  psql:
+    cmds:
+      - docker exec -it v_postgres bash -c 'psql postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST/$POSTGRES_DB'

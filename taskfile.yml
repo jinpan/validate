@@ -1,0 +1,12 @@
+version: "3"
+
+includes:
+  devops:
+    taskfile: ./devops/taskfile.yml
+  next:
+    taskfile: ./src/next/taskfile.yml
+
+tasks:
+  rnd-pw:
+    cmds:
+      - python3 -c "import secrets; print(secrets.token_urlsafe({{.CLI_ARGS}}))"

@@ -1,0 +1,6 @@
+version: "3"
+
+tasks:
+  prisma-migrate:
+    cmds:
+      - docker exec -it v_next dotenv -e /validate/devops/local/common.env -- yarn prisma migrate dev
